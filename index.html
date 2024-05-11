@@ -10,24 +10,6 @@
 
   .code {
     background-color: black;
-  }
-  
-  .codered {
-    color: red;
-  }
-  .codeyellow {
-    color: yellow;
-  }
-  .codegreen {
-    color: green;
-  }
-  .codeblue {
-    color: blue;
-  }
-  .codegray {
-    color: grey;
-  }
-  .codedef {
     color: white;
   }
 </style>
@@ -52,26 +34,25 @@
 <br>
 <h1>Level 1 (Unopenable Notepad):</h1>
 <span class="code">
+Dim objShell, objWMIService, colProcesses<br>
 
-<p class="codedef">Dim objShell, objWMIService, colProcesses</p><br>
+Set objShell = CreateObject("WScript.Shell")<br>
+Set objWMIService = GetObject("winmgmts:\\.\root\cimv2")<br>
 
-<p class="codedef">Set objShell = CreateObject("WScript.Shell")</p><br>
-<p class="codedef">Set objWMIService = GetObject("winmgmts:\\.\root\cimv2")</p><br>
-
-Do
-    Set colProcesses = objWMIService.ExecQuery("Select * from Win32_Process Where Name = 'notepad.exe'")
+Do<br>
+    Set colProcesses = objWMIService.ExecQuery("Select * from Win32_Process Where Name = 'notepad.exe'")<br>
     
-    If colProcesses.Count = 0 Then
-        objShell.Run "notepad", 1, True
-    Else
-        Dim hwnd
-        hwnd = objShell.AppActivate("Notepad")
+    If colProcesses.Count = 0 Then<br>
+        objShell.Run "notepad", 1, True<br>
+    Else<br>
+        Dim hwnd<br>
+        hwnd = objShell.AppActivate("Notepad")<br>
         
-        If hwnd Then
-            objShell.AppActivate "Notepad"
-        End If
-    End If
-Loop
+        If hwnd Then<br>
+            objShell.AppActivate "Notepad"<br>
+        End If<br>
+    End If<br>
+Loop<br>
 </span>
 
 <h1>Level 2 (Application Bomber):</h1>
