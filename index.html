@@ -9,7 +9,26 @@
   }
 
   .code {
-    background-color: grey;
+    background-color: black;
+  }
+  
+  .codered {
+    color: red;
+  }
+  .codeyellow {
+    color: yellow;
+  }
+  .codegreen {
+    color: green;
+  }
+  .codeblue {
+    color: blue;
+  }
+  .codegray {
+    color: grey;
+  }
+  .codedef {
+    color: white;
   }
 </style>
 
@@ -33,10 +52,11 @@
 <br>
 <h1>Level 1 (Unopenable Notepad):</h1>
 <span class="code">
-Dim objShell, objWMIService, colProcesses
 
-Set objShell = CreateObject("WScript.Shell")
-Set objWMIService = GetObject("winmgmts:\\.\root\cimv2")
+<p class="codedef">Dim objShell, objWMIService, colProcesses</p><br>
+
+<p class="codedef">Set objShell = CreateObject("WScript.Shell")</p><br>
+<p class="codedef">Set objWMIService = GetObject("winmgmts:\\.\root\cimv2")</p><br>
 
 Do
     Set colProcesses = objWMIService.ExecQuery("Select * from Win32_Process Where Name = 'notepad.exe'")
